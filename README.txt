@@ -86,8 +86,8 @@ fertility_exopher_final.xlsx
 ## Contact Information
 For any questions or clarifications, please contact the corresponding author:
 
-Name: [Author Name]
-Email: [email@example.com]
+Name: Rebecca Androwski
+Email: rebecca.androwski@rutgers.edu
 Institution: Rutgers University
 
 
