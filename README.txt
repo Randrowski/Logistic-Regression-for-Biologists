@@ -56,6 +56,7 @@ ggthemeAssist
 stats
 ggsignif
 ggpubr
+ggprism
 
 Other software: Microsoft Excel
 
