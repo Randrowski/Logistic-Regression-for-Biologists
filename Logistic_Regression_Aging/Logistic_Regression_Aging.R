@@ -1,6 +1,6 @@
 ###############################################
 # Regression models on exopher frequency data #
-# January 6 2025                              #
+# September 12 2025                           #
 ###############################################
 
 #text like this with a hashtag before it is called a comment and is not executable code. 
@@ -23,7 +23,10 @@
 #ggpubr
 #ggprism
 
-#next, load the libraries by executing code in the upper part of the screen where all this code is. Again, to execute a line of code on a mac, go to the end of the line and hit command+shift+enter
+#next, load the libraries by executing code in the upper part of the screen 
+#where all this code is. Again, to execute a line of code on a mac, go to the 
+#end of the line and hit command+shift+enter
+
 library(dplyr) #datamanipulation
 library(readxl) #read excel spreadsheets into R
 library(writexl) #convert R data frames into excel spreadsheet
@@ -167,6 +170,22 @@ data_CMH <- mantelhaen.test(data_df$Treatment, data_df$Exopher, data_df$Trial)
 # Print the result
 print(data_CMH)
 
+## Calculating the signed z-value from the CMH statistic
+
+chisq_val <- unname(data_CMH$statistic)  # this is Z^2
+
+# The CMH Z should be positive if the second level of your Treatment factor is 
+# associated with a higher probability of “Yes” in Exopher, and negative otherwise.
+
+# You can use the Mantel–Haenszel odds ratio from the test:
+
+mh_or <- unname(data_CMH$estimate)       # Mantel–Haenszel pooled odds ratio
+sign_val <- sign(log(mh_or))             # +1 or -1 depending on direction
+
+# Combine into signed Z
+
+Z_val <- sign_val * sqrt(chisq_val)
+Z_val
 
 
 ##Reformatting the data for logistic regression
